@@ -3,4 +3,4 @@ To run the above set of code install the following
 1) Node JS
 2) Visual Studio Code 
 
-Using Visual Studio Code - install the necessary packages to run the app
+Using Visual Studio Code - install the necessary packages to run the application
