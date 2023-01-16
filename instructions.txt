@@ -4,3 +4,5 @@ To run the above set of code install the following
 2) Visual Studio Code 
 
 Using Visual Studio Code - install the necessary packages to run the application
+
+To run the individual application please follow the instructions.txt present in its corresponding folder.
