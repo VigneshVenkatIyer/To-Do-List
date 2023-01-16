@@ -8,11 +8,11 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [toshowCount,setToShowCount] = useState(0);
   const [isRefreshNeeded,setIsRefreshNeeded] = useState("");
-
+  const baseURL = "http://localhost:3000/tasks"
   /*addToDo is used to add a new todoitem*/
   const addTodo = text => {
     document.getElementsByClassName("loader-container-parent")[0].style.display = "block";
-    axios.post('http://localhost:3000/tasks', {
+    axios.post(`${baseURL}`, {
       taskName: text,
       completed: false
     })
@@ -28,7 +28,7 @@ function App() {
 
   /*markToDo is used to mark a todoitem as active*/
   const markTodo = (task,index) => {
-    axios.put(`http://localhost:3000/tasks/${index}`, {
+    axios.put(`${baseURL}/${index}`, {
       taskName: task,
       completed: true
     })
@@ -46,7 +46,7 @@ function App() {
 
   /*removeToDo is used to remove a todoitem*/
   const removeTodo = index => {
-    axios.delete(`http://localhost:3000/tasks/${index}`)
+    axios.delete(`${baseURL}/${index}`)
     .then(function (response) {
       console.log("Task Removed Successfully");
       setIsRefreshNeeded(index)
@@ -113,7 +113,7 @@ function App() {
   }
 
   useEffect(()=>{
-    axios.get('http://localhost:3000/tasks').then(function (response) {
+    axios.get(`${baseURL}`).then(function (response) {
       console.log(response.data.data)
       setTodos(response.data.data)
     })
@@ -123,7 +123,7 @@ function App() {
   },[isRefreshNeeded])
 
   useEffect(()=>{
-    axios.get('http://localhost:3000/tasks').then(function (response) {
+    axios.get(`${baseURL}`).then(function (response) {
       console.log(response.data.data)
       setTodos(response.data.data)
     })
